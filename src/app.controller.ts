@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PlatformService } from './platform/platform.service'
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly platformService: PlatformService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('/platform')
+  getPlatform(): string {
+    return this.platformService.getPlatform();
   }
 }
